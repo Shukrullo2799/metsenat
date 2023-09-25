@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <h1 class="">Sponsor</h1>
-  </div>
+  <div>Header component</div>
 </template>
 
 <script setup lang="ts"></script>
