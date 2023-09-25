@@ -10,3 +10,6 @@ body {
   color: #1d1d1f;
   font-size: 14px;
 }
+input:focus {
+  outline: none;
+}

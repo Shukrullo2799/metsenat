@@ -1,37 +1,78 @@
 <template>
   <div class="flex justify-between items-center">
-    <div class="border border-[#E0E7FF] rounded-md overflow-hidden">
+    <div class="border border-[#E0E7FF] rounded-md overflow-hidden w-2/4 flex">
       <button
-        class="py-[14px] px-6 text-xs leading-3 font-medium"
+        class="py-[14px] px-6 text-xs leading-3 font-medium flex-grow"
         :class="active_tab == 1 ? 'bg-[#3366FF] text-white' : 'text-[#3366FF99]'"
         @click="active_tab = 1"
       >
         DASHBOARD
       </button>
       <button
-        class="py-[14px] px-6 text-xs leading-3 font-medium"
+        class="py-[14px] px-6 text-xs leading-3 font-medium flex-grow"
         :class="active_tab == 2 ? 'bg-[#3366FF] text-white' : 'text-[#3366FF99]'"
         @click="active_tab = 2"
       >
         HOMIYLAR
       </button>
       <button
-        class="py-[14px] px-6 text-xs leading-3 font-medium"
+        class="py-[14px] px-6 text-xs leading-3 font-medium flex-grow"
         :class="active_tab == 3 ? 'bg-[#3366FF] text-white' : 'text-[#3366FF99]'"
         @click="active_tab = 3"
       >
         TALABALAR
       </button>
     </div>
-    <div>
-      <div>
-        <input
-          class="border border-[#E0E7FF] rounded-md px-4 py-2"
-          type="text"
-          placeholder="Search"
-        />
+    <div class="flex items-center gap-5">
+      <div class="flex items-center rounded-md bg-[#E8E8E8] p-[10px]">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+        >
+          <g clip-path="url(#clip0_120_308)">
+            <path
+              d="M8.33333 14.1667C11.555 14.1667 14.1667 11.555 14.1667 8.33333C14.1667 5.11167 11.555 2.5 8.33333 2.5C5.11167 2.5 2.5 5.11167 2.5 8.33333C2.5 11.555 5.11167 14.1667 8.33333 14.1667Z"
+              stroke="#B1B1B8"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M17.5 17.5L12.5 12.5"
+              stroke="#B1B1B8"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_120_308">
+              <rect width="20" height="20" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+        <input type="text" placeholder="Izlash" class="bg-transparent leading-5 ml-2 w-60" />
       </div>
-      <button class="px-8 py-2 bg-[#EDF1FD]">Filter</button>
+      <button
+        class="px-8 py-2 bg-[#EDF1FD] rounded-md flex items-center gap-2 text-[#3365FC] font-medium leading-6"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+        >
+          <path
+            d="M12.6668 1.33334H3.3335C2.80306 1.33334 2.29436 1.54405 1.91928 1.91912C1.54421 2.2942 1.3335 2.8029 1.3335 3.33334V4.11334C1.3334 4.38863 1.39014 4.66098 1.50016 4.91334V4.95334C1.59435 5.16732 1.72776 5.36178 1.8935 5.52667L6.00016 9.60667V14C5.99994 14.1133 6.02859 14.2248 6.08341 14.3239C6.13823 14.4231 6.21742 14.5066 6.3135 14.5667C6.41959 14.6324 6.54201 14.6671 6.66683 14.6667C6.77119 14.666 6.87395 14.6409 6.96683 14.5933L9.6335 13.26C9.74344 13.2046 9.83589 13.1198 9.90061 13.0151C9.96533 12.9104 9.99979 12.7898 10.0002 12.6667V9.60667L14.0802 5.52667C14.2459 5.36178 14.3793 5.16732 14.4735 4.95334V4.91334C14.5927 4.66296 14.6585 4.39052 14.6668 4.11334V3.33334C14.6668 2.8029 14.4561 2.2942 14.081 1.91912C13.706 1.54405 13.1973 1.33334 12.6668 1.33334ZM8.86016 8.86C8.79838 8.9223 8.74949 8.99617 8.71632 9.0774C8.68314 9.15862 8.66632 9.2456 8.66683 9.33334V12.2533L7.3335 12.92V9.33334C7.334 9.2456 7.31719 9.15862 7.28401 9.0774C7.25083 8.99617 7.20195 8.9223 7.14016 8.86L3.60683 5.33334H12.3935L8.86016 8.86ZM13.3335 4H2.66683V3.33334C2.66683 3.15652 2.73707 2.98696 2.86209 2.86193C2.98712 2.73691 3.15669 2.66667 3.3335 2.66667H12.6668C12.8436 2.66667 13.0132 2.73691 13.1382 2.86193C13.2633 2.98696 13.3335 3.15652 13.3335 3.33334V4Z"
+            fill="#3365FC"
+          />
+        </svg>
+        Filter
+      </button>
     </div>
   </div>
 

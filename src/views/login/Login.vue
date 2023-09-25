@@ -7,7 +7,7 @@
         <div>
           <label for="email">LOGIN</label>
           <input
-            class="w-full mt-2 px-4 py-3 bg-[#e0e7ff33] rounded-lg border focus:outline-none"
+            class="w-full mt-2 px-4 py-3 bg-[#e0e7ff33] rounded-lg border"
             :class="v$.username.$error ? 'border-red-600' : 'border-[#E0E7FF]'"
             type="text"
             v-model="form.username"
@@ -20,7 +20,7 @@
         <div>
           <label for="password">PAROL</label>
           <input
-            class="w-full mt-2 px-4 py-3 bg-[#e0e7ff33] rounded-lg border focus:outline-none"
+            class="w-full mt-2 px-4 py-3 bg-[#e0e7ff33] rounded-lg border"
             :class="v$.password.$error ? 'border-red-600' : 'border-[#E0E7FF]'"
             type="password"
             v-model="form.password"
