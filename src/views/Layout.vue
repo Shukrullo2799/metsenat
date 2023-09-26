@@ -65,6 +65,7 @@
       </div>
       <button
         class="px-8 py-2 bg-[#EDF1FD] rounded-md flex items-center gap-2 text-[#3365FC] font-medium leading-6"
+        @click="filter_dialog = true"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -92,14 +93,18 @@
   <template v-if="active_tab == 3">
     <h1>Talabalar</h1>
   </template>
+
+  <filter-dialog v-if="filter_dialog" @close="filter_dialog = false" />
 </template>
 
 <script setup lang="ts">
 import Sponsor from '@/views/sponsor/Index.vue'
+import FilterDialog from '@/components/FilterDialog.vue'
 import { ref } from 'vue'
 
 const active_tab = ref(2)
 const s = ref('')
+const filter_dialog = ref(false)
 </script>
 
 <style scoped></style>
