@@ -1,1 +1,0 @@
-import{h as a,i as s}from"./index-391a8e89.js";const u=a("main",()=>{let t=s(""),o="https://metsenatclub.xn--h28h.uz/api/v1/",r=s(localStorage.getItem("access_token")?localStorage.getItem("access_token"):"");return{backend_url:o,access_token:r,server_error:t,setAccessToken:e=>{r.value=e,localStorage.setItem("access_token",e)},setServerError:e=>{t.value=e}}});export{u};

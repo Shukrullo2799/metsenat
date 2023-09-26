@@ -1,1 +1,0 @@
-import{_ as o}from"./_plugin-vue_export-helper-c27b6911.js";import{o as e,c as r}from"./index-391a8e89.js";const c={};function n(s,t){return e(),r("div",null,"show sponsor")}const f=o(c,[["render",n]]);export{f as default};
