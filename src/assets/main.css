@@ -10,6 +10,26 @@ body {
   color: #1d1d1f;
   font-size: 14px;
 }
-input:focus {
+input:focus,
+select:focus {
   outline: none;
+}
+/* scroll style */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4x;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f100;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1cfd9;
+}
+::-webkit-scrollbar {
+  height: 0.35rem;
+  width: 0.25rem;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
 }

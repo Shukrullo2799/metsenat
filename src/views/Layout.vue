@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center bg-[#fafafa] py-6 px-[120px]">
     <div class="border border-[#E0E7FF] rounded-md overflow-hidden w-2/4 flex">
       <button
         class="py-[14px] px-6 text-xs leading-3 font-medium flex-grow"
@@ -54,7 +54,12 @@
             </clipPath>
           </defs>
         </svg>
-        <input type="text" placeholder="Izlash" class="bg-transparent leading-5 ml-2 w-60" />
+        <input
+          v-model="s"
+          type="text"
+          placeholder="Izlash"
+          class="bg-transparent leading-5 ml-2 w-60"
+        />
       </div>
       <button
         class="px-8 py-2 bg-[#EDF1FD] rounded-md flex items-center gap-2 text-[#3365FC] font-medium leading-6"
@@ -92,6 +97,7 @@ import Sponsor from '@/views/sponsor/Index.vue'
 import { ref } from 'vue'
 
 const active_tab = ref(2)
+const s = ref('')
 </script>
 
 <style scoped></style>

@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const useMainStore = defineStore('main', () => {
-  let server_error = ref('')
+  let server_error: any = ref('')
   let backend_url = import.meta.env.VITE_BASE_URL
   let access_token = ref(
     localStorage.getItem('access_token') ? localStorage.getItem('access_token') : ''
