@@ -68,6 +68,8 @@
 
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { useSponsorStore } from '@/stores/sponsor'
 import Pagination from '@/components/Pagination.vue'
 const { fetchSponsors, setSponsor } = useSponsorStore()

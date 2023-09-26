@@ -15,8 +15,9 @@
           :value="paginate.per_page"
           @change="changePage(1)"
           v-model="paginate.per_page"
+          v-bind=""
         >
-          <option class="p-2" v-for="row in rowses" :key="row" :value="row.value">
+          <option class="p-2" v-for="(row, i) in rowses" :key="i" :value="row.value">
             {{ row.label }}
           </option>
         </select>
@@ -79,61 +80,96 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, ref, computed, watch, onMounted } from 'vue'
+
+interface Row {
+  label: number
+  value: number
+  command: () => void
+}
+
+export default defineComponent({
   props: {
-    total: { type: Number, default: 1 },
-    rows: { type: Array, default: () => [10, 20, 50] },
-    page: { type: Number, default: 1 },
-    per_page: { type: Number, default: 1 }
-  },
-  emits: ['page'],
-  data() {
-    return {
-      paginate: {
-        page: this.page,
-        per_page: this.per_page,
-        total: this.total
-      },
-      rowses: []
-    }
-  },
-  computed: {
-    page_total() {
-      return this.paginate.total ? Math.ceil(this.paginate.total / this.paginate.per_page) : 1
-    }
-  },
-  watch: {
-    total(to) {
-      this.paginate.total = to
-      if (this.page > 1 && to % this.per_page == 0) {
-        this.paginate.page = this.paginate.page - 1
-        this.$emit('page', this.paginate)
-      }
-    }
-  },
-  methods: {
-    show(i) {
-      return i >= this.paginate.page - 2 && i <= this.paginate.page + 2
+    total: {
+      type: Number,
+      required: true
     },
-    changePage(page) {
-      this.paginate.page = page
-      this.$emit('page', this.paginate)
+    per_page: {
+      type: Number,
+      default: 1
+    },
+    page: {
+      type: Number,
+      default: 1
+    },
+    rows: {
+      type: Array,
+      default: () => [10, 20, 50]
     }
   },
-  mounted() {
-    this.rowses = this.rows.map((row) => {
-      return {
-        label: row,
-        value: row,
-        command: () => {
-          this.paginate.per_page = row
-          this.changePage(1)
+  setup(props, { emit }) {
+    const paginate = ref({
+      page: props.page,
+      per_page: props.per_page,
+      total: props.total
+    })
+    const per_page = ref(props.per_page)
+
+    const rows = [10, 20, 50]
+    const rowses = ref<Row[]>([])
+
+    const page_total = computed(() =>
+      Math.ceil(paginate.value.total / Number(paginate.value.per_page))
+    )
+
+    function show(i: number) {
+      return i >= paginate.value.page - 2 && i <= paginate.value.page + 2
+    }
+
+    function changePage(page: number) {
+      paginate.value.page = page
+      emit('page', paginate.value)
+    }
+
+    function createRowses() {
+      rowses.value = rows.map((row) => {
+        return {
+          label: row,
+          value: row,
+          command: () => {
+            paginate.value.per_page = row
+            emit('page', paginate.value)
+          }
+        }
+      })
+    }
+
+    watch(
+      () => props.total,
+      (to) => {
+        paginate.value.total = to
+        if (props.page > 1 && to % Number(props.per_page) == 0) {
+          paginate.value.page = paginate.value.page - 1
+          emit('page', paginate.value)
         }
       }
+    )
+
+    onMounted(() => {
+      createRowses()
     })
+
+    return {
+      paginate,
+      rowses,
+      page_total,
+      per_page,
+      show,
+      changePage
+    }
   }
-}
+})
 </script>
 
 <style scoped>
