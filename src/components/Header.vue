@@ -1,9 +1,9 @@
 <template>
-  <div class="py-3 px-[120px] bg-white flex justify-between items-center">
+  <div class="py-3 px-6 md:px-[120px] bg-white flex justify-between items-center gap-3">
     <router-link to="/">
       <img src="../assets/images/logo.png" alt="logo" />
     </router-link>
-    <div class="flex gap-10">
+    <div class="flex md:gap-10 gap-2">
       <button class="bg-[#F1F1F3] p-1 font-medium flex items-center gap-6 pl-5 rounded-md">
         Shoxrux
         <div class="bg-[#00AE69] rounded w-8 h-8 pt-2 px-1">

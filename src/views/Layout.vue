@@ -1,6 +1,8 @@
 <template>
-  <div class="flex justify-between items-center bg-[#fafafa] py-6 px-[120px]">
-    <div class="border border-[#E0E7FF] rounded-md overflow-hidden w-2/4 flex">
+  <div
+    class="flex justify-between items-center bg-[#fafafa] py-6 px-6 md:px-[120px] gap-3 lg:flex-row flex-col"
+  >
+    <div class="border border-[#E0E7FF] rounded-md overflow-hidden w-full lg:w-2/4 flex">
       <button
         class="py-[14px] px-6 text-xs leading-3 font-medium flex-grow"
         :class="active_tab == 1 ? 'bg-[#3366FF] text-white' : 'text-[#3366FF99]'"
@@ -23,8 +25,8 @@
         TALABALAR
       </button>
     </div>
-    <div class="flex items-center gap-5">
-      <div class="flex items-center rounded-md bg-[#E8E8E8] p-[10px]">
+    <div class="flex items-center gap-5 lg:w-auto w-full">
+      <div class="flex items-center rounded-md bg-[#E8E8E8] p-[10px] lg:w-auto w-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -58,7 +60,7 @@
           v-model="s"
           type="text"
           placeholder="Izlash"
-          class="bg-transparent leading-5 ml-2 w-60"
+          class="bg-transparent leading-5 ml-2 lg:w-60 w-full"
         />
       </div>
       <button
@@ -85,7 +87,7 @@
     <h1>Dashboard</h1>
   </template>
   <template v-if="active_tab == 2">
-    <sponsor />
+    <sponsor :search="s" />
   </template>
   <template v-if="active_tab == 3">
     <h1>Talabalar</h1>

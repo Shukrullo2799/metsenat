@@ -1,5 +1,5 @@
 <template>
-  <div class="px-[120px] py-10 bg-[#F5F5F7] h-full flex flex-col overflow-auto">
+  <div class="px-6 md:px-[120px] py-10 bg-[#F5F5F7] h-full flex flex-col overflow-auto">
     <div class="h-full overflow-auto">
       <table class="w-full border-separate border-spacing-y-3">
         <thead class="text-[#B1B1B8]">
@@ -67,17 +67,24 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useSponsorStore } from '@/stores/sponsor'
 import Pagination from '@/components/Pagination.vue'
 const { fetchSponsors, setSponsor } = useSponsorStore()
+
+const props: any = defineProps({
+  search: {
+    type: String,
+    default: ''
+  }
+})
 
 const total = ref(50)
 const page = ref(1)
 const per_page = ref(10)
 
 const getList = () => {
-  const params = `page=${page.value}&page_size
+  const params = `search=${props.search}&page=${page.value}&page_size
 =${per_page.value}`
   fetchSponsors(params).then((res: any) => {
     total.value = res.data.count
@@ -91,6 +98,13 @@ const getPage = (event: any) => {
   per_page.value = event.per_page
   getList()
 }
+
+watch(
+  () => props.search,
+  (val) => {
+    getList()
+  }
+)
 
 onMounted(() => {
   getList()
